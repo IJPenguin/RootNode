@@ -1,0 +1,23 @@
+|-- .gitignore
+|-- Datasets
+    |-- USvideos.csv
+    |-- US_category_id.json
+|-- frontend
+    |-- .gitignore
+    |-- eslint.config.js
+    |-- index.html
+    |-- package-lock.json
+    |-- package.json
+    |-- postcss.config.js
+    |-- README.md
+    |-- src
+        |-- App.jsx
+        |-- assets
+            |-- rootnode_logo.png
+        |-- index.css
+        |-- main.jsx
+    |-- tailwind.config.js
+    |-- vite.config.js
+|-- LICENSE
+|-- Predicting YouTube 'Categories'.ipynb
+|-- README.md
