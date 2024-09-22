@@ -3,7 +3,7 @@ import landing from "../../../assets/landing.png";
 
 const Hero = () => {
 	return (
-		<div className="flex items-center gap-20 bg-background py-24 px-72">
+		<div className="flex items-center gap-20 bg-background px-72 py-16">
 			<Content />
 			<img
 				src={landing}

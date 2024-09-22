@@ -14,7 +14,7 @@ const Features = () => {
 	const archiveHeading = "Create Code Archives";
 	const executeHeading = "Execute Code Instantly";
 	return (
-		<div className="flex justify-between bg-background px-72">
+		<div className="flex justify-between bg-background px-72 py-16">
 			<Card
 				image={streaming}
 				heading={streamingHeading}
