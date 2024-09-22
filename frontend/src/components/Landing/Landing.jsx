@@ -2,6 +2,7 @@ import Hero from "./Hero/Hero";
 import Features from "./Features/Features";
 import Articles from "./Articles/Articles";
 import Community from "./Community/Community";
+import Cta from "./Cta/Cta";
 
 const Landing = () => {
 	return (
@@ -10,6 +11,7 @@ const Landing = () => {
 			<Features />
 			<Articles />
 			<Community />
+			<Cta />
 		</>
 	);
 };
