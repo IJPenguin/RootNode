@@ -64,7 +64,5 @@
     |-- tailwind.config.js
     |-- vite.config.js
 |-- LICENSE
-|-- package-lock.json
-|-- package.json
 |-- Predicting YouTube 'Categories'.ipynb
 |-- README.md
