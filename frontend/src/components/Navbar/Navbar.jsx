@@ -4,11 +4,14 @@ import { useState } from "react";
 import Logo from "../../Logo/Logo";
 import Button from "../Button/Button";
 import Navlink from "./Navlink";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+	const navigate = useNavigate();
 	const [isOpen, setOpen] = useState(false);
 	const handleLogin = () => {
 		// Login code
+		navigate("login");
 	};
 	return (
 		<nav className="flex items-center justify-between bg-background px-4 py-3">
