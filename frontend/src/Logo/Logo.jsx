@@ -5,7 +5,7 @@ const Logo = ({ logo, logoOnly, x, y, fontSize, fontWeight }) => {
 			<span
 				className={`hidden ${logoOnly ? " " : "md:block"} ${fontSize} font-sans ${fontWeight} pl-2 text-white`}
 			>
-				Root Node
+				<a href="/">Root Node</a>
 			</span>
 		</div>
 	);

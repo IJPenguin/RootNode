@@ -2,7 +2,7 @@ import WhiteButton from "../../Button/WhiteButton";
 
 const Cta = () => {
 	return (
-		<div className="flex flex-col items-center bg-background py-28">
+		<div className="flex flex-col items-center bg-background py-96">
 			<h4 className="text-base font-medium text-white">
 				Code, Collaborate, and Create Together
 			</h4>

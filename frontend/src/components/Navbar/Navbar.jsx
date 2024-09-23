@@ -22,11 +22,11 @@ const Navbar = () => {
 			/>
 			<div className="hidden md:block">
 				<ul className="items-center justify-between gap-5 md:flex">
-					<Navlink text="Streams" route="/streams" />
-					<Navlink text="Archives" route="/archives" />
-					<Navlink text="Sandbox" route="/sandbox" />
-					<Navlink text="Learn" route="/learn" />
-					<Navlink text="Devs" route="/devs" />
+					<Navlink text="Streams" route="streams" />
+					<Navlink text="Archives" route="archives" />
+					<Navlink text="Sandbox" route="sandbox" />
+					<Navlink text="Learn" route="learn" />
+					<Navlink text="Devs" route="devs" />
 					<Button text="Login" onClick={handleLogin} />
 				</ul>
 			</div>
