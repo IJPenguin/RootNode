@@ -129,13 +129,13 @@ const LearnPage = () => {
 					return (
 						<div
 							key={index}
-							className={`transform overflow-hidden rounded-lg border-2 border-bright-purple shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl ${contentStyle} flex flex-col justify-between`}
+							className={`bg-light-background transform overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl ${contentStyle} flex flex-col justify-between`}
 						>
 							<div className="flex h-full items-center justify-center p-4 text-center text-2xl font-semibold">
 								{content.title}
 							</div>
 
-							<div className="space-y-1 bg-background-purple p-4 text-white">
+							<div className="bg-gunmetal space-y-1 p-4 text-white">
 								<div className="flex justify-between">
 									<span className="font-semibold">
 										{content.author}

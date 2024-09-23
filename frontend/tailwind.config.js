@@ -12,6 +12,8 @@ export default {
 			purple: "#9D4EDD",
 			"light-purple": "#C77DFF",
 			white: "#EBEBEB",
+			"light-background": "#AA98A9",
+			gunmetal: "#2A212C",
 		},
 		extend: {
 			dropShadow: {
