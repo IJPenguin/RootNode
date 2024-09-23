@@ -11,11 +11,56 @@
     |-- postcss.config.js
     |-- README.md
     |-- src
-        |-- App.jsx
         |-- assets
-            |-- rootnode_logo.png
+            |-- archive.svg
+            |-- articles.png
+            |-- coding_animation.gif
+            |-- community.png
+            |-- execute.svg
+            |-- landing.png
+            |-- logo.png
+            |-- logo.svg
+            |-- logo_black.png
+            |-- streaming.svg
+        |-- components
+            |-- Button
+                |-- Button.jsx
+                |-- WhiteButton.jsx
+            |-- Footer
+                |-- Footer.jsx
+            |-- Landing
+                |-- Articles
+                    |-- Articles.jsx
+                |-- Community
+                    |-- Community.jsx
+                |-- Content
+                    |-- Content.jsx
+                |-- Cta
+                    |-- Cta.jsx
+                |-- Features
+                    |-- Card.jsx
+                    |-- Features.jsx
+                |-- Hero
+                    |-- Hero.jsx
+                |-- Landing.jsx
+            |-- Layout
+                |-- Layout.jsx
+            |-- LearnPage
+                |-- LearnPage.jsx
+            |-- Navbar
+                |-- Navbar.jsx
+                |-- Navlink.jsx
         |-- index.css
+        |-- Logo
+            |-- Logo.jsx
         |-- main.jsx
+        |-- routes
+            |-- App.jsx
+            |-- pages
+                |-- Homepage.jsx
+                |-- Learnroute.jsx
+                |-- Loginpage.jsx
+                |-- Registerpage.jsx
     |-- tailwind.config.js
     |-- vite.config.js
 |-- LICENSE
