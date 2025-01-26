@@ -3,6 +3,7 @@ import Homepage from "./pages/Homepage";
 import LearnRoute from "./pages/Learnroute";
 import Loginpage from "./pages/Loginpage";
 import Registerpage from "./pages/Registerpage";
+import Streampage from "./pages/Streampage";
 
 function App() {
 	return (
@@ -12,6 +13,7 @@ function App() {
 				<Route path="/learn" element={<LearnRoute />} />
 				<Route path="/login" element={<Loginpage />} />
 				<Route path="/register" element={<Registerpage />} />
+				<Route path="/streams" element={<Streampage />} />
 			</Routes>
 		</Router>
 	);
