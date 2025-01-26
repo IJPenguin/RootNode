@@ -1,10 +1,52 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Button from "../Button/Button";
 
 const LearnPage = () => {
 	const [selectedCategory, setSelectedCategory] = useState("All");
+	const [articles, setArticles] = useState([]);
+	const [newArticle, setNewArticle] = useState({
+		title: "",
+		author: "",
+		description: "",
+	});
+	const [showForm, setShowForm] = useState(false);
 
-	const contentData = [
+	useEffect(() => {
+		const fetchArticles = async () => {
+			try {
+				const response = await axios.get(
+					"http://localhost:3001/articles",
+				);
+				setArticles(response.data);
+			} catch (error) {
+				console.error("Error fetching articles:", error);
+			}
+		};
+		fetchArticles();
+	}, []);
+
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setNewArticle({ ...newArticle, [name]: value });
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		try {
+			const response = await axios.post(
+				"http://localhost:3001/articles",
+				newArticle,
+			);
+			setArticles([...articles, response.data]);
+			setNewArticle({ title: "", author: "", description: "" });
+			setShowForm(false);
+		} catch (error) {
+			console.error("Error creating article:", error);
+		}
+	};
+
+	const videoData = [
 		{
 			type: "Videos",
 			title: "Video 1",
@@ -29,55 +71,18 @@ const LearnPage = () => {
 			description: "Understanding CSS Flexbox",
 			time: "1 day ago",
 		},
-		{
-			type: "Articles",
-			title: "Article 1",
-			author: "Emily White",
-			upvotes: 89,
-			description: "React Hooks Overview",
-			time: "3 days ago",
-		},
-		{
-			type: "Articles",
-			title: "Article 2",
-			author: "Chris Green",
-			upvotes: 150,
-			description: "JavaScript ES6 Features",
-			time: "1 week ago",
-		},
-		{
-			type: "Articles",
-			title: "Article 3",
-			author: "Sarah Lee",
-			upvotes: 67,
-			description: "State Management in React",
-			time: "2 weeks ago",
-		},
-		{
-			type: "Vlogs",
-			title: "Vlog 1",
-			author: "Michael Johnson",
-			upvotes: 400,
-			description: "My Coding Journey",
-			time: "4 hours ago",
-		},
-		{
-			type: "Vlogs",
-			title: "Vlog 2",
-			author: "Anna Cooper",
-			upvotes: 320,
-			description: "How I Built My First Web App",
-			time: "2 days ago",
-		},
-		{
-			type: "Vlogs",
-			title: "Vlog 3",
-			author: "Sophia Wilson",
-			upvotes: 210,
-			description: "Tips for Learning JavaScript",
-			time: "1 week ago",
-		},
 	];
+
+	const articleData = articles.map((article) => ({
+		type: "Articles",
+		title: article.title,
+		author: article.author,
+		upvotes: article.upvotes,
+		description: article.description,
+		time: new Date(article.time).toLocaleString(),
+	}));
+
+	const contentData = [...videoData, ...articleData];
 
 	const filteredContent =
 		selectedCategory === "All"
@@ -115,10 +120,64 @@ const LearnPage = () => {
 							{category}
 						</button>
 					))}
+					<Button
+						text="New Article"
+						onClick={() => setShowForm(!showForm)}
+					/>
 				</div>
 			</div>
 
-			<div className="mx-auto grid max-w-full grid-cols-1 gap-6 px-5 md:grid-cols-2 lg:grid-cols-3">
+			{/* Article Submission Form */}
+			{showForm && (
+				<div className="mx-auto max-w-lg rounded-lg bg-light-background p-4 shadow-md">
+					<h2 className="mb-4 text-2xl font-bold">
+						Submit a New Article
+					</h2>
+					<form onSubmit={handleSubmit}>
+						<div className="mb-4">
+							<label className="text-gray-700 block text-sm font-medium">
+								Title
+							</label>
+							<input
+								type="text"
+								name="title"
+								value={newArticle.title}
+								onChange={handleInputChange}
+								className="border-gray-300 focus:border-indigo-300 focus:ring-indigo-200 mt-1 block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50"
+								required
+							/>
+						</div>
+						<div className="mb-4">
+							<label className="text-gray-700 block text-sm font-medium">
+								Author
+							</label>
+							<input
+								type="text"
+								name="author"
+								value={newArticle.author}
+								onChange={handleInputChange}
+								className="border-gray-300 focus:border-indigo-300 focus:ring-indigo-200 mt-1 block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50"
+								required
+							/>
+						</div>
+						<div className="mb-4">
+							<label className="text-gray-700 block text-sm font-medium">
+								Description
+							</label>
+							<textarea
+								name="description"
+								value={newArticle.description}
+								onChange={handleInputChange}
+								className="border-gray-300 focus:border-indigo-300 focus:ring-indigo-200 mt-1 block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50"
+								required
+							></textarea>
+						</div>
+						<Button text="Submit" />
+					</form>
+				</div>
+			)}
+
+			<div className="mx-auto mt-8 grid max-w-full grid-cols-1 gap-6 px-5 md:grid-cols-2 lg:grid-cols-3">
 				{filteredContent.map((content, index) => {
 					const isVideo = content.type === "Videos";
 					const isArticle = content.type === "Articles";
@@ -129,13 +188,13 @@ const LearnPage = () => {
 					return (
 						<div
 							key={index}
-							className={`bg-light-background transform overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl ${contentStyle} flex flex-col justify-between`}
+							className={`transform overflow-hidden rounded-lg bg-light-background shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl ${contentStyle} flex flex-col justify-between`}
 						>
 							<div className="flex h-full items-center justify-center p-4 text-center text-2xl font-semibold">
 								{content.title}
 							</div>
 
-							<div className="bg-gunmetal space-y-1 p-4 text-white">
+							<div className="space-y-1 bg-gunmetal p-4 text-white">
 								<div className="flex justify-between">
 									<span className="font-semibold">
 										{content.author}

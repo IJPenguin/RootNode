@@ -1,4 +1,13 @@
 |-- .gitignore
+|-- backend
+    |-- .env
+    |-- models
+        |-- Article.js
+    |-- package-lock.json
+    |-- package.json
+    |-- routes
+        |-- articles.js
+    |-- server.js
 |-- Datasets
     |-- USvideos.csv
     |-- US_category_id.json
