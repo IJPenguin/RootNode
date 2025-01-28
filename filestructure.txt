@@ -32,6 +32,8 @@
             |-- logo_black.png
             |-- streaming.svg
         |-- components
+            |-- article
+                |-- ArticleDetail.jsx
             |-- Button
                 |-- Button.jsx
                 |-- WhiteButton.jsx

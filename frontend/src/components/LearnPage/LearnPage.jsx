@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 
 const LearnPage = () => {
@@ -80,6 +81,7 @@ const LearnPage = () => {
 		upvotes: article.upvotes,
 		description: article.description,
 		time: new Date(article.time).toLocaleString(),
+		id: article._id,
 	}));
 
 	const contentData = [...videoData, ...articleData];
@@ -179,9 +181,7 @@ const LearnPage = () => {
 
 			<div className="mx-auto mt-8 grid max-w-full grid-cols-1 gap-6 px-5 md:grid-cols-2 lg:grid-cols-3">
 				{filteredContent.map((content, index) => {
-					const isVideo = content.type === "Videos";
 					const isArticle = content.type === "Articles";
-					const isVlog = content.type === "Vlogs";
 
 					let contentStyle = "w-full h-60 md:h-72 lg:h-80";
 
@@ -190,9 +190,12 @@ const LearnPage = () => {
 							key={index}
 							className={`transform overflow-hidden rounded-lg bg-light-background shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl ${contentStyle} flex flex-col justify-between`}
 						>
-							<div className="flex h-full items-center justify-center p-4 text-center text-2xl font-semibold">
+							<Link
+								to={isArticle ? `/articles/${content.id}` : "#"}
+								className="flex h-full items-center justify-center p-4 text-center text-2xl font-semibold"
+							>
 								{content.title}
-							</div>
+							</Link>
 
 							<div className="space-y-1 bg-gunmetal p-4 text-white">
 								<div className="flex justify-between">
